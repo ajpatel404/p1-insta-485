@@ -49,9 +49,9 @@ def main(input_dir, output,verbose):
         print("Jinja error detected")
         sys.exit(2)
 
-    for item in dicty:
-        print(item)
-    '''
+    #for item in dicty:
+        #print(item)
+    
     fill = dicty[0]['context']['words']
 
     matthog = template_env.get_template('index.html')
@@ -76,7 +76,7 @@ def main(input_dir, output,verbose):
             print("Rendered index.html ->", doscoutput_path/"index.html")
     except FileNotFoundError as err:
         print("file not found")
-        sys.exit(2) '''
+        sys.exit(2) 
 
 
 
