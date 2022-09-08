@@ -56,23 +56,41 @@
             <a href = "/explore/"> Explore </a>
         </div>
         <div style = "position:absolute; top:5px; left:95%">
-            <a href = "/users/awdeorio/"> awdeorio </a>
+            <a href = "/users/{{logname}}/"> {{logname}} </a>
         </div>
+        
+        <h1> {{username}}</h1>
+        {% if logname == username%}
+            <p> </p>
+        {% elif logname_follows_username == true%}
+            <p> following </p>
+        {% else %}
+            <p> not following </p>
+        {% endif %}
+        <div class = "sameline">
+            {{total_posts}}
+            {% if total_posts == 1 %}
+                post
+            {% else %}
+                posts
+            {% endif %}
+            <div class = "postlikes">
+                {% if followers == 1 %}
+                    <a href = "/users/{{username}}/followers/"> {{followers}} follower </a>
+                {% else %}
+                    <a href = "/users/{{username}}/followers/"> {{followers}} followers </a>
+                {% endif %}
+            </div>
+            <div class = "postlikes">
+                <a href = "/users/{{username}}/following/"> {{following}} following </a>
+            </div>
+        </div>
+        <h3> {{fullname}} </h3>
 
-        <h1> awdeorio</h1>
-        <div class = "sameline">
-            2 posts
-            <div class = "postlikes">
-                <a href = "/users/awdeorio/followers/"> 2 followers </a>
+        {% for post in posts %}
+            <div class = "sameline">
+                <a href = "/posts/{{post.postid}}/"> <img src = {{post.img_url}} class = "img" alt = ""> </a>
             </div>
-            <div class = "postlikes">
-                <a href = "/users/awdeorio/following/"> 2 following </a>
-            </div>
-        </div>
-        Andrew DeOrio
-        <div class = "sameline">
-            <a href = "/posts/1/"> <img src = "/uploads/122a7d27ca1d7420a1072f695d9290fad4501a41.jpg" class = "img" alt = ""> </a>
-            <a href = "/posts/3/"> <img src = "/uploads/9887e06812ef434d291e4936417d125cd594b38a.jpg" class = "img" alt = ""> </a>
-        </div>
+        {% endfor %}
     </body>
 </html>

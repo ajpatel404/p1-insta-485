@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>insta485</title>
+        <style>
+            .sameline {
+                display: flex;
+            }
+            .post {
+                width: 100%;
+                height: auto;
+                background: #fff;
+                border: 1px solid #dfdfdf;
+                margin-top: 40px;
+            }
+
+            .postuser {
+                width: auto;
+                font-weight: bold;
+                color: #000;
+                font-size: 14px;
+                margin-left: 10px;
+            }
+
+            .posttime {
+                width: auto;
+                font-weight: bold;
+                color: #000;
+                font-size: 14px;
+                margin-left: 90%;
+            }
+
+            .postlikes {
+                font-weight: bold;
+            }
+
+            .commentusername {
+                font-weight: bold;
+            }
+
+            .img {
+                width: 100%;
+                height: 500px;
+                object-fit: cover;
+            }
+
+            .pfp {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        </style>
+    </head>
+
+    <body>
+
+            <a href = "/"> Backslash </a>
+        <div style = "position:absolute; top:5px; left:90%">
+            <a href = "/explore/"> Explore </a>
+        </div>
+        <div style = "position:absolute; top:5px; left:95%">
+            <a href = "/users/{{logname}}/"> {{logname}} </a>
+        </div>
+        <div class = "post"> 
+            <div class = "sameline">
+                <div class = "pfp">
+                    <img src = {{owner_img_url}} class = "pfp" alt = "">
+                </div> 
+                <div class = "postuser"> 
+                    <a href = "/users/{{owner}}/">{{owner}}</a>
+                </div>
+                <div class = "posttime"> 
+                    <a href = "/posts/{{postid}}/"> {{timestamp}} </a>
+                </div>
+            </div>
+            <img src = "{{img_url}}" class = "img" alt = ""> 
+            {% if likes == 1 %}
+                <div class = "sameline"> 
+                    <div class = "postlikes"> {{likes}} </div>
+                    like
+                </div>
+            {% else %}
+                <div class = "sameline"> 
+                    <div class = "postlikes"> {{likes}} </div>
+                    likes
+                </div>
+            {% endif %}      
+            {% for comm in comments %}
+                <div class = "sameline"> 
+                    <div class = "commentusername">
+                        <a href = "/users/{{comm.owner}}/"> {{comm.owner}}</a>
+                    </div>
+                    {{comm.text}} 
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
