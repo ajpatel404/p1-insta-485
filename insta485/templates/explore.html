@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>insta485</title>
+
+        <style>
+            .sameline {
+                display: flex;
+            }
+            .post {
+                width: 100%;
+                height: auto;
+                background: #fff;
+                border: 1px solid #dfdfdf;
+                margin-top: 40px;
+                display: flex;
+            }
+
+            .img {
+                width: 10%;
+                height: 10%;
+                object-fit: scale-down;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <a href = "/"> Backslash </a>
+        <div style = "position:absolute; top:5px; left:90%">
+            <a href = "/explore/"> Explore </a>
+        </div>
+        <div style = "position:absolute; top:5px; left:95%">
+            <a href = "/users/{{logname}}/"> {{logname}} </a>
+        </div>
+
+        <h2>Discover People</h2> 
+    
+        {% for f in not_following %}
+            <div class = "post"> 
+                <img src = {{f.user_img_url}} class = "img" alt = "">
+                <a href = "/users/{{f.username}}/"> {{f.username}} </a>
+            </div>
+        {% endfor %}
+    </body>
+</html>
